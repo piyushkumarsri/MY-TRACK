@@ -1,0 +1,109 @@
+<form autocomplete="off" [formGroup]="form">
+  <div fxLayout="row" fxLayoutAlign="space-between">
+    <h3>New Project</h3>
+    <div>
+      <button mat-raised-button type="button" color="secondary" (click)="addToStack()" >+</button>
+      <button mat-raised-button color="primary" (click)="save()" [disabled]="form.invalid">Save</button>
+    </div>
+  </div>
+  <div fxLayout="row wrap">
+
+    <div fxFlex="50%">
+      <mat-card>
+
+        <div fxLayout="column" fxLayoutGap="10px">
+          <mat-form-field>
+            <mat-select placeholder="Choose Client" formControlName="client">
+              <mat-option value="1">
+                Client 1
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          {{form.get('client').errors|json}}
+          <mat-form-field>
+            <input matInput formControlName="projectName" type="text" placeholder="Project Name">
+          </mat-form-field>
+          <mat-form-field>
+            <textarea matInput formControlName="description" type="text" placeholder="Project Description"></textarea>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Billing Type" formControlName="billingType">
+              <mat-option *ngFor="let bill of billingType" [value]="bill">
+                {{bill}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput formControlName="price" required type="number" placeholder="Price">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput formControlName="startDate" required type="date" placeholder="Start Date">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput formControlName="projectedEndDate" required type="date" placeholder="Projected End Date">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput formControlName="weburl" required type="text" placeholder="Web URL">
+          </mat-form-field>
+          {{form.get('weburl').errors|json}}
+          <div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+    
+      <mat-card fxFlex="50%">
+          <div><h4>Technology Stack</h4></div>
+          <div fxLayout="column">
+            <table formArrayName="technoStack">
+              <thead>
+                <tr>
+                  <th>Stack Name</th>
+                  <th>Description</th>
+                  <th>#</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let stack of techoStackArray.controls;let indx = index;" [formGroup]="stack">
+                  <td><input formControlName="stack_name">
+                    {{stack.get('stack_name').errors|json}}
+                  </td>
+                  <td><input formControlName="stack_desc">
+                    {{stack.get('stack_desc').errors|json}}
+                  </td>
+                  <td><button (click)="removeStack(indx)">x</button></td>
+                  
+                </tr>
+              </tbody>
+            </table>
+          </div>
+      </mat-card>
+    
+      
+    
+    <div fxFlex="100%">
+      Console
+
+      <ul>
+        <li>choose client</li>
+        <li>name</li>
+        <li>descriptoin</li>
+        <li>billing type</li>
+        <li>technology stack</li>
+        <li>price (perhour/fixed)</li>
+        <li>start date</li>
+        <li>projected end date</li>
+        <li>web url</li>
+
+      </ul>
+      <pre>
+      {{form.value|json}}
+
+    Raw Value
+
+    {{form.getRawValue()|json}}
+    </pre>
+    </div>
+  </div>
+</form>

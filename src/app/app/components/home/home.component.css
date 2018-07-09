@@ -1,0 +1,11 @@
+.example-container {
+    height: calc(100vh - 100px)
+}
+.example-container mat-drawer {
+    width: 200px;
+}
+
+.content {
+    padding:5px;
+    margin:5px;
+}

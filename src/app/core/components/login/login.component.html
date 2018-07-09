@@ -1,0 +1,33 @@
+<form #login="ngForm">
+  <mat-card style="width: 300px;margin-left:30%;margin-top:10%">
+    <mat-card-title>Login</mat-card-title>
+    <mat-card-content>
+      <div fxLayout="column" fxLayoutGap="10px">
+
+      
+      <mat-form-field>
+        <input required minlength="5" matInput name="username" type="text" placeholder="Login" [(ngModel)]="username">
+      </mat-form-field>
+      <div  style="color:tomato" *ngIf="login.controls['username'] && login.controls['username'].touched &&   login.controls['username'].errors">
+        <span *ngIf="login.controls['username'].errors.required">Username required</span>
+        <span *ngIf="login.controls['username'].errors.minlength">Minimum 5 characters</span>
+      </div>
+      <br>
+      <mat-form-field>
+        <input required matInput name="password" type="password" placeholder="password" [(ngModel)]="password">
+
+      </mat-form-field>
+      <div style="color:tomato" *ngIf="login.controls['password'] && login.controls['password'].touched && login.controls['password'].errors">
+        <span *ngIf="login.controls['password'].errors.required">Password required</span>
+      </div>
+
+</div>
+    </mat-card-content>
+    <mat-card-actions style="text-align: center">
+      <button [disabled]="login.invalid" mat-raised-button color="primary" (click)="doLogin()">Login</button>
+      <!-- Valid: {{login.valid}} {{login.controls['username'].errors | json}} -->
+    </mat-card-actions>
+
+    <a routerLink="/home">Go home</a>
+  </mat-card>
+</form>

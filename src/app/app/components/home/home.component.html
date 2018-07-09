@@ -1,0 +1,21 @@
+<app-header></app-header>
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened="true">
+
+    <mat-nav-list dense>
+      <ng-container *ngFor="let m of selectedMenu">
+        <h3 mat-subheader>
+          <b>{{m.label}}</b>
+        </h3>
+        <a *ngFor="let item of m.children" mat-list-item [routerLink]="[item.routerLink]">{{item.label}} </a>
+      </ng-container>
+    </mat-nav-list>
+    <button (click)="doLogout()">Logout</button>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div class="content">
+      <router-outlet></router-outlet>
+
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
