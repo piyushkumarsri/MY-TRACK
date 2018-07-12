@@ -6,6 +6,7 @@ import { MatInputModule } from "@angular/material/input";
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatSelectModule} from '@angular/material/select';
+import {FileUploadModule} from 'primeng/fileupload';
 
 export const MATERIAL = [
   MatCardModule,
@@ -15,5 +16,6 @@ export const MATERIAL = [
   MatInputModule,
   MatSidenavModule,
   MatListModule,
-  MatSelectModule
+  MatSelectModule,
+  FileUploadModule
 ];

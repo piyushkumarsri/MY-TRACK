@@ -14,14 +14,14 @@ export const MENU = {
         },
         {
             label: "Project", children: [
-                
+                { routerLink: `${ADMIN_PREFIX}Projects`, label: "Projects" },
                 { routerLink: `${ADMIN_PREFIX}new-project`, label: "New Project" },
             ]
         },
         {
             label: "Task", children: [
-                
-                { routerLink: `${ADMIN_PREFIX}new-taskkk`, label: "New Task" },
+
+                { routerLink: `${ADMIN_PREFIX}new-task`, label: "New Task" },
             ]
         }
     ]

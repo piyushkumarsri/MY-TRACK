@@ -12,7 +12,7 @@ const routes:Routes = [
   {path:"clients",component:AdmClientsComponent},
   {path:"new-client",component:AdmNewClientComponent},
   {path:"new-project",component:AdmNewProjectComponent},
-  {path:"new-taskkk",component:AdmNewTaskComponent}
+  {path:"new-task",component:AdmNewTaskComponent}
 ]
 
 @NgModule({
