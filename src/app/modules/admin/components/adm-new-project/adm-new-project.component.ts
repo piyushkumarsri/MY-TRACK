@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 
 import { TrackingValidators } from '../../../../shared/tracking.validators';
+import { RestService } from '../../../../shared/rest.service';
 @Component({
   selector: 'app-adm-new-project',
   templateUrl: './adm-new-project.component.html',
@@ -9,12 +10,14 @@ import { TrackingValidators } from '../../../../shared/tracking.validators';
 })
 export class AdmNewProjectComponent implements OnInit {
 
+  clients;
   form: FormGroup;
   billingType: Array<string>;
   techoStackArray: FormArray;
-  constructor() { }
+  constructor(private rest:RestService) { }
 
   ngOnInit() {
+    this.fetchClients();
     this.techoStackArray = new FormArray([]);
     this.prepareForm();
     this.billingType = ["HOURLY", 'FIXED'];
@@ -51,6 +54,20 @@ export class AdmNewProjectComponent implements OnInit {
     this.addRequired();
    // this.techoStackArray.enable();
   }
+
+
+  fetchClients(){
+    this.rest.fetch('admin/fetch-client')
+    .subscribe(res=>{
+
+        if(res.status){
+          debugger
+          this.clients = res.data;
+          
+        }
+    });
+  }
+
 
   addRequired(){
 

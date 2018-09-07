@@ -7,10 +7,12 @@ import { AdmNewProjectComponent } from './components/adm-new-project/adm-new-pro
 import { AdmNewClientComponent } from './components/adm-new-client/adm-new-client.component';
 import { AdmClientsComponent } from './components/adm-clients/adm-clients.component';
 import { AdmNewTaskComponent } from './components/adm-new-task/adm-new-task.component';
+import { AdmNewErojectComponent } from './components/adm-new-eroject/adm-new-eroject.component';
 
 const routes:Routes = [
   {path:"clients",component:AdmClientsComponent},
   {path:"new-client",component:AdmNewClientComponent},
+  {path:"Projects",component:AdmNewErojectComponent},
   {path:"new-project",component:AdmNewProjectComponent},
   {path:"new-task",component:AdmNewTaskComponent}
 ]
@@ -21,6 +23,6 @@ const routes:Routes = [
     UiToolkitModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [AdmNewProjectComponent, AdmNewClientComponent, AdmClientsComponent, AdmNewTaskComponent]
+  declarations: [AdmNewProjectComponent, AdmNewErojectComponent, AdmNewClientComponent, AdmClientsComponent, AdmNewTaskComponent]
 })
 export class AdminModule { }

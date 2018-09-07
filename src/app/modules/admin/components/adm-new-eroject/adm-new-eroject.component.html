@@ -1,0 +1,33 @@
+<!-- <p>
+  adm-new-eroject works!
+</p> -->
+<mat-card>
+  <table>
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Name</th>
+        <th>Project</th>
+        <th>Description</th>
+        <th>Billing</th>
+        <th>Price</th>
+        <th>Start_Date</th>
+        <th>End_Date</th>
+        <th>Web_Url</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let client of clients;let indx=index">
+        <td>{{indx+1}}</td>
+        <td>{{client.clientName}}</td>
+        <td>{{client.orginationName}}</td>
+        <td>{{client.contactPerson}}</td>
+        <td>{{client.phone}}</td>
+        <td>{{client.email}}</td>
+        <td>{{client.active}}</td>
+        <td>{{client.createdDate}}</td>
+      </tr>
+    </tbody>
+  </table>
+ </mat-card>
+ 

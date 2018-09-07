@@ -12,10 +12,19 @@
       <mat-card>
 
         <div fxLayout="column" fxLayoutGap="10px">
-          <mat-form-field>
+
+            <!-- <mat-form-field>
+                <mat-select placeholder="Choose Client" formControlName="client">
+                  <mat-option value="1">
+                    Client 1
+                  </mat-option>
+                </mat-select>
+              </mat-form-field> -->
+
+          <mat-form-field *ngIf="clients">
             <mat-select placeholder="Choose Client" formControlName="client">
-              <mat-option value="1">
-                Client 1
+              <mat-option *ngFor="let item of clients" value="client.clientName">
+                {{item.clientName}}
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -34,7 +43,7 @@
             </mat-select>
           </mat-form-field>
           <mat-form-field>
-            <input matInput formControlName="priority" required type="number" placeholder="Priority">
+            <input matInput formControlName="price" required type="number" placeholder="Price">
           </mat-form-field>
           <mat-form-field>
             <input matInput formControlName="startDate" required type="date" placeholder="Start Date">
