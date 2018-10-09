@@ -25,6 +25,19 @@ export class AdmNewProjectComponent implements OnInit {
   }
 
   save() {
+    debugger;
+    console.log(this.form.value);
+    if(this.form.valid){
+      this.rest.post('admin/save-project',this.form.value)
+      .subscribe(res=>{
+        if(res.status){
+          alert("Project Saved");
+          this.form.reset();
+        }else {
+          alert('Failed to save the client!');
+        }
+      });
+    }
 
   }
 

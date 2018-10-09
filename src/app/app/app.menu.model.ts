@@ -20,7 +20,7 @@ export const MENU = {
         },
         {
             label: "Task", children: [
-
+                { routerLink: `${ADMIN_PREFIX}new-taskss`, label: "Tasks" },
                 { routerLink: `${ADMIN_PREFIX}new-task`, label: "New Task" },
             ]
         }

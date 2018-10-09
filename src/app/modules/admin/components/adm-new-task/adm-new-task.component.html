@@ -12,38 +12,38 @@
       <mat-card>
 
         <div fxLayout="column" fxLayoutGap="10px">
-          <mat-form-field>
-            <mat-select placeholder="Choose Client" >
-              <mat-option value="1">
-                Client 1
+          <mat-form-field *ngIf="projects">
+            <mat-select placeholder="Choose Project" formControlName="projectName" >
+              <mat-option *ngFor="let item of projects" [value]="item.client">
+                {{item.projectName}}
               </mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field>
-            <input matInput  type="text" placeholder="Task Name">
+            <input matInput formControlName="taskname"  type="text" placeholder="Task Name">
           </mat-form-field>
           <mat-form-field>
-            <textarea matInput  type="text" placeholder="Task Description"></textarea>
+            <textarea matInput formControlName="taskdescription"  type="text" placeholder="Task Description"></textarea>
           </mat-form-field>
           <mat-form-field>
-            <mat-select placeholder="Task Type" formControlName="taskType">
+            <mat-select placeholder="Task Type" formControlName="tasktype">
               <mat-option *ngFor="let task of taskType"  [value]="task">
                 {{task}}
               </mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field>
-            <input matInput  required type="number" placeholder="Priority">
+            <input matInput formControlName="priority" required type="number" placeholder="Priority">
           </mat-form-field>
           <mat-form-field>
-            <input matInput  required type="date" placeholder="Start Date">
+            <input matInput formControlName="projectedStartDate" required type="date" placeholder="Start Date">
           </mat-form-field>
 
           <mat-form-field>
-            <input matInput  required type="date" placeholder="Projected End Date">
+            <input matInput formControlName="projectedEndDate" required type="date" placeholder="Projected End Date">
           </mat-form-field>
           <mat-form-field>
-            <input matInput  required type="text" placeholder="Web URL">
+            <input matInput formControlName="weburl"  required type="text" placeholder="Web URL">
           </mat-form-field>
           <div>
           </div>
@@ -56,6 +56,7 @@
         <h4>Technology Stack</h4>
       </div>
       <div fxLayout="column">
+          <button mat-raised-button color="primary" (click)="save()" [disabled]="form.invalid">Save</button>
         <!-- <table formArrayName="technoStack">
           <thead>
             <tr>
@@ -85,25 +86,27 @@
 
 
     <div fxFlex="100%">
-      Console
-
-      <ul>
-        <li>choose client</li>
-        <li>name</li>
-        <li>descriptoin</li>
-        <li>billing type</li>
-        <li>technology stack</li>
-        <li>price (perhour/fixed)</li>
-        <li>start date</li>
-        <li>projected end date</li>
-        <li>web url</li>
-
-      </ul>
-      <pre>
-
-    Raw Value
-
-    </pre>
-    </div>
+        <!-- Console
+  
+        <ul>
+          <li>choose client</li>
+          <li>name</li>
+          <li>descriptoin</li>
+          <li>billing type</li>
+          <li>technology stack</li>
+          <li>price (perhour/fixed)</li>
+          <li>start date</li>
+          <li>projected end date</li>
+          <li>web url</li>
+  
+        </ul> -->
+        <pre>
+        {{form.value|json}}
+  
+      Raw Value
+  
+      {{form.getRawValue()|json}}
+      </pre>
+      </div>
   </div>
 </form>

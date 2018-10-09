@@ -85,3 +85,39 @@ api.post("/admin/save-client",(req,res)=>{
 });
 
 
+
+api.post("/admin/save-project",(req,res)=>{
+    var body = req.body;
+    console.log(body);
+
+    body.active = true;
+    body.createdDate = new Date();
+
+    db.project.insert(body,(err,doc)=>{
+        if(err) handleError(res,err,"Failed to save client");
+        console.log('saved project');
+        handleOk(res,doc);
+    });
+});
+
+api.get("/admin/fetch-project",(req,res)=>{
+    db.project.find({},(err,docs)=> {
+        if(err) handleError(res,err,"Failed to fetch client");
+      console.log(docs);
+        handleOk(res,docs);
+    });
+});
+api.post("/admin/save-task",(req,res)=>{
+    var body = req.body;
+    console.log(body);
+
+    body.active = true;
+    body.createdDate = new Date();
+
+    db.task.insert(body,(err,doc)=>{
+        if(err) handleError(res,err,"Failed to save client");
+        console.log('saved project');
+        handleOk(res,doc);
+    });
+});
+
