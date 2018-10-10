@@ -120,4 +120,11 @@ api.post("/admin/save-task",(req,res)=>{
         handleOk(res,doc);
     });
 });
+api.get("/admin/fetch-task",(req,res)=>{
+    db.task.find({},(err,docs)=> {
+        if(err) handleError(res,err,"Failed to fetch client");
+      console.log(docs);
+        handleOk(res,docs);
+    });
+});
 

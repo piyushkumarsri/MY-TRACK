@@ -27,7 +27,7 @@ export class AdmNewTaskComponent implements OnInit {
     .subscribe(res=>{
   
         if(res.status){
-          debugger
+          //debugger
           this.projects = res.data;
           
         }
